@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="إذاعة البحرين - صوتك إلى العالم">
+    <title>إذاعة البحرين - Radio Bahrain</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated background circles */
+        .bg-decoration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 3s;
+        }
+
+        .circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 30%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 30px) scale(0.9);
+            }
+        }
+
+        /* Header */
+        header {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .logo-container {
+            display: inline-block;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 140%;
+            height: 140%;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            animation: ripple 2s infinite;
+        }
+
+        .logo-icon {
+            font-size: 3rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main content */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.3s both;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease both;
+        }
+
+        .feature-card:nth-child(1) {
+            animation-delay: 0.7s;
+        }
+
+        .feature-card:nth-child(2) {
+            animation-delay: 0.9s;
+        }
+
+        .feature-card:nth-child(3) {
+            animation-delay: 1.1s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            margin: 4rem 0;
+            animation: fadeInUp 1s ease 1.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #667eea;
+            background: #ffffff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            background: #f8f9ff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            opacity: 0.8;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .logo-icon {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Wave animation for radio signal */
+        .radio-waves {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+        }
+
+        .wave {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            animation: wave-animation 2s infinite;
+        }
+
+        .wave:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .wave:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes wave-animation {
+            0% {
+                width: 20px;
+                height: 20px;
+                margin: -10px 0 0 -10px;
+                opacity: 1;
+            }
+            100% {
+                width: 80px;
+                height: 80px;
+                margin: -40px 0 0 -40px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-decoration">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <div class="radio-waves">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+                <span class="logo-icon" aria-label="أيقونة الراديو">📻</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1>إذاعة البحرين</h1>
+        <p class="subtitle">صوتك إلى العالم - نربط البحرين بالعالم</p>
+
+        <div class="features">
+            <div class="feature-card">
+                <span class="feature-icon" aria-label="ميكروفون">🎙️</span>
+                <h3 class="feature-title">بث مباشر</h3>
+                <p class="feature-description">استمع إلى برامجنا المباشرة على مدار الساعة مع أفضل المذيعين والمحتوى المتنوع</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon" aria-label="نوتة موسيقية">🎵</span>
+                <h3 class="feature-title">موسيقى متنوعة</h3>
+                <p class="feature-description">مجموعة واسعة من الموسيقى العربية والعالمية لجميع الأذواق والأعمار</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon" aria-label="جريدة">📰</span>
+                <h3 class="feature-title">أخبار محلية</h3>
+                <p class="feature-description">تغطية شاملة للأخبار المحلية والإقليمية والعالمية لحظة بلحظة</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <!-- TODO: Replace '#' with actual streaming URL -->
+            <a href="#" class="cta-button">استمع الآن</a>
+        </div>
+    </main>
+
+    <footer>
+        <!-- TODO: Replace '#' with actual social media URLs -->
+        <div class="social-links">
+            <a href="#" class="social-link" aria-label="فيسبوك">📘</a>
+            <a href="#" class="social-link" aria-label="تويتر">🐦</a>
+            <a href="#" class="social-link" aria-label="إنستغرام">📷</a>
+            <a href="#" class="social-link" aria-label="يوتيوب">📺</a>
+        </div>
+        <p>&copy; 2024 إذاعة البحرين - جميع الحقوق محفوظة</p>
+    </footer>
+</body>
+</html>
