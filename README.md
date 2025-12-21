@@ -31,6 +31,4 @@ Visit the live page at: [https://radiobahrain.github.io/RadioBahrain/](https://r
 - Tajawal Font (Google Fonts)
 - RTL (Right-to-Left) Layout
 
-## المساهمة - Contributing
-
-Feel free to submit issues and pull requests to improve the landing page!
+#### MADE WITH ❤️ FROM RADIO BAHRAIN 🇧🇭 🎙️
