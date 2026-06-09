@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-state="soon">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Radio Bahrain – Overlay</title>
+<style>
+  :root{
+    --brand-red:#9E3A37;
+    --brand-red-ink:#C74740;
+    --white:#ffffff;
+    --banner-bg:#C7B8B6;
+    --banner-ink:#424242;
+  }
+
+  /* Reset */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Tajawal","Cairo","Noto Kufi Arabic","Noto Sans Arabic","Segoe UI","Arial",system-ui,sans-serif;
+    background:var(--brand-red);
+    color:var(--white);
+  }
+
+  /* Stage */
+  .stage{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:6vh 4vw 18vh; /* leave room for bottom banner */
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* Logo block */
+  .logo-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+    text-align:center;
+  }
+
+  .logo-circle{
+    width:min(44vmin,320px);
+    aspect-ratio:1/1;
+    background:var(--white);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+  }
+
+  /* Mic + wordmark inside the white circle */
+  .logo-inner{
+    width:78%;
+    max-width:520px;
+  }
+  .wordmark{
+    margin-top:14px;
+    font-weight:800;
+    color:var(--brand-red);
+    font-size:clamp(14px,2.4vmin,22px);
+    letter-spacing:.2px;
+  }
+
+  /* Socials + brand text */
+  .socials{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .social{
+    width:44px;
+    height:44px;
+    border:2px solid var(--white);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+  }
+  .social svg{width:22px;height:22px;stroke-width:2}
+
+  .brand-en{
+    margin-top:6px;
+    font-weight:700;
+    font-size:clamp(14px,2.2vmin,20px);
+  }
+
+  /* Bottom banner (three variants) */
+  .banner{
+    position:fixed;
+    inset:auto 0 0 0;
+    background:var(--banner-bg);
+    color:var(--banner-ink);
+    display:grid;
+    place-items:center;
+    height:min(18vmin,120px);
+    padding:10px 4vw;
+  }
+  .banner h1{
+    margin:0;
+    font-weight:900;
+    font-size:clamp(22px,5vmin,44px);
+  }
+  .banner .text{display:none}
+
+  /* Programmatic states */
+  body[data-state="soon"] .banner .soon{display:block}
+  body[data-state="break"] .banner .break{display:block}
+  body[data-state="ended"] .banner .ended{display:block}
+
+  /* Optional helper toggles (pure CSS; delete if not needed) */
+  .toggles{
+    position:fixed;
+    left:12px;
+    top:12px;
+    display:flex;
+    gap:8px;
+    z-index:3;
+    opacity:.2;
+    transition:opacity .2s ease;
+  }
+  .toggles:hover{opacity:1}
+  .toggles a{
+    text-decoration:none;
+    background:#ffffff22;
+    color:#fff;
+    border:1px solid #ffffff66;
+    border-radius:8px;
+    padding:6px 10px;
+    font:600 12px/1.2 ui-sans-serif,system-ui;
+  }
+  /* hash-based pure CSS state switch (no JS) */
+    :root[data-state="soon"] body{data-state="soon"}
+    :root[data-state="break"] body{data-state="break"}
+    :root[data-state="ended"] body{data-state="ended"}
+</style>
+</head>
+<body data-state="soon">
+  <!-- Optional, pure-HTML state toggles using anchors (remove if not desired) -->
+  <nav class="toggles" aria-label="تبديل الحالة (اختياري)">
+    <a href="#" onclick href="#" onclick="document.body.setAttribute('data-state', 'soon'); return false;">قريباً</a>
+    <a href="#" onclick="document.body.setAttribute('data-state', 'break'); return false;">فاصل</a>
+    <a href="#" onclick="document.body.setAttribute('data-state', 'ended'); return false;">انتهى</a>
+  </nav>
+    <div class="logo-wrap">
+      <div class="logo-circle" aria-hidden="true">
+        <div class="logo-inner">
+          <!-- MIC ICON (inline SVG, brand red strokes) -->
+          <svg viewBox="0 0 200 200" width="100%" height="auto" aria-hidden="true">
+            <defs>
+              <style>
+                .mic-stroke{stroke:var(--brand-red-ink);stroke-width:10;fill:none;stroke-linecap:round;stroke-linejoin:round}
+                .mic-dot{fill:var(--brand-red-ink)}
+              </style>
+            </defs>
+            <!-- Capsule mic body -->
+            <rect x="70" y="30" rx="26" ry="26" width="60" height="100" class="mic-stroke" />
+            <!-- Internal perforation dots -->
+            <circle cx="100" cy="48" r="4" class="mic-dot"/>
+            <circle cx="100" cy="64" r="4" class="mic-dot"/>
+            <circle cx="100" cy="80" r="4" class="mic-dot"/>
+            <circle cx="100" cy="96" r="4" class="mic-dot"/>
+            <circle cx="100" cy="112" r="4" class="mic-dot"/>
+
+            <!-- U holder -->
+            <path d="M55 102c0 25 20 45 45 45s45-20 45-45" class="mic-stroke"/>
+            <!-- Stem -->
+            <line x1="100" y1="147" x2="100" y2="165" class="mic-stroke"/>
+            <!-- Base -->
+            <path d="M65 174h70" class="mic-stroke"/>
+          </svg>
+
+          <div class="wordmark">إذاعة البحرين</div>
+        </div>
+      </div>
+
+      <!-- Social icons -->
+      <div class="socials" aria-label="روابط التواصل">
+        <!-- X -->
+        <span class="social" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white">
+            <path d="M3 3l18 18M21 3L3 21" />
+          </svg>
+        </span>
+        <!-- Instagram -->
+        <span class="social" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white">
+            <rect x="4" y="4" width="16" height="16" rx="4" ry="4"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.2" cy="6.8" r="1.2" fill="white" stroke="none"/>
+          </svg>
+        </span>
+        <!-- YouTube -->
+        <span class="social" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white">
+            <rect x="3" y="7" width="18" height="10" rx="3" ry="3"/>
+            <path d="M11 9l5 3-5 3z" fill="white" stroke="none"/>
+          </svg>
+        </span>
+        <!-- TikTok -->
+        <span class="social" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-linejoin="round">
+            <path d="M10 6v9.2a3.8 3.8 0 1 1-2.8-3.7" />
+            <path d="M14 6.5a6.5 6.5 0 0 0 4 1.5" />
+          </svg>
+        </span>
+      </div>
+
+      <div class="brand-en" aria-label="Radio Bahrain">Radio Bahrain</div>
+    </div>
+  </main>
+
+  <!-- Bottom banner with three programmatic versions -->
+  <footer class="banner" role="contentinfo" aria-live="polite">
+    <h1 class="text soon">يبدأ البث المباشر بعد قليل</h1>
+    <h1 class="text break">فاصل ونواصل</h1>
+    <h1 class="text ended">انتهى البث المباشر</h1>
+  </footer>
+</body>
+</html>
